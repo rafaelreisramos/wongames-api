@@ -33,15 +33,43 @@ async function getByName(name, entityName) {
 async function create(name, entityName) {
   const item = await getByName(name, entityName)
 
-  console.log(name.trim())
-  console.log(item)
-
   if (!item) {
     return await strapi.services[entityName].create({
-      name: name.trim(),
+      name: name,
       slug: slugify(name, { lower: true })
     })
   }
+}
+
+async function createManyToManyData(products) {
+  const developers = new Set()
+  const publishers = new Set()
+  const categories = new Set()
+  const platforms = new Set()
+
+  products.forEach((product) => {
+    const { developer, publisher, genres, supportedOperatingSystems } = product
+
+    genres &&
+      genres.forEach((genre) => {
+        categories.add(genre.trim())
+      })
+
+    supportedOperatingSystems &&
+      supportedOperatingSystems.forEach((platform) => {
+        platforms.add(platform.trim())
+      })
+
+    developers.add(developer.trim())
+    publishers.add(publisher.trim())
+  })
+
+  return Promise.all([
+    ...[...developers].map((developer) => create(developer, 'developer')),
+    ...[...publishers].map((publisher) => create(publisher, 'publisher')),
+    ...[...categories].map((category) => create(category, 'category')),
+    ...[...platforms].map((platform) => create(platform, 'platform'))
+  ])
 }
 
 module.exports = {
@@ -50,6 +78,6 @@ module.exports = {
 
     const { data: { products } } = await axios.get(gogApiUrl)
 
-    await create(products[1].publisher, 'publisher')
+    await createManyToManyData(products)
   }
 };
