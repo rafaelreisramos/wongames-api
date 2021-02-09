@@ -50,15 +50,13 @@ async function createManyToManyData(products) {
   products.forEach((product) => {
     const { developer, publisher, genres, supportedOperatingSystems } = product
 
-    genres &&
-      genres.forEach((genre) => {
-        categories.add(genre.trim())
-      })
+    genres?.forEach((genre) => {
+      categories.add(genre.trim())
+    })
 
-    supportedOperatingSystems &&
-      supportedOperatingSystems.forEach((platform) => {
-        platforms.add(platform.trim())
-      })
+    supportedOperatingSystems?.forEach((platform) => {
+      platforms.add(platform.trim())
+    })
 
     developers.add(developer.trim())
     publishers.add(publisher.trim())
