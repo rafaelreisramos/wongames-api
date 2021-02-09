@@ -63,10 +63,10 @@ async function createManyToManyData(products) {
   })
 
   return Promise.all([
-    ...[...developers].map((developer) => create(developer, 'developer')),
-    ...[...publishers].map((publisher) => create(publisher, 'publisher')),
-    ...[...categories].map((category) => create(category, 'category')),
-    ...[...platforms].map((platform) => create(platform, 'platform'))
+    ...Array.from(developers).map((developer) => create(developer, 'developer')),
+    ...Array.from(publishers).map((publisher) => create(publisher, 'publisher')),
+    ...Array.from(categories).map((category) => create(category, 'category')),
+    ...Array.from(platforms).map((platform) => create(platform, 'platform'))
   ])
 }
 
