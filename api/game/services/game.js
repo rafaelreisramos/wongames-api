@@ -70,6 +70,31 @@ async function createManyToManyData(products) {
   ])
 }
 
+async function setImage({ image, game, field = 'cover'}) {
+  const url = `https:${image}_bg_crop_1680x655.jpg`
+  const { data } = await axios.get(url, { responseType: 'arraybuffer' })
+  const buffer = Buffer.from(data, 'base64')
+
+  const FormData = require('form-data')
+  const formData = new FormData()
+
+  formData.append('refId', game.id)
+  formData.append('ref', 'game')
+  formData.append('field', field)
+  formData.append('files', buffer, { filename: `${game.slug}.jpg` })
+
+  console.info(`Uploading ${field} image: ${game.slug}.jpg`)
+
+  await axios({
+    method: 'POST',
+    url: `http://${strapi.config.host}:${strapi.config.port}/upload`,
+    data: formData,
+    headers: {
+      'Content-Type': `multipart/form-data; boundary=${formData._boundary}`
+    }
+  })
+}
+
 async function createGames(products) {
   return Promise.all(
     products.map(async (product) => {
@@ -95,6 +120,8 @@ async function createGames(products) {
           publisher: await getByName(product.publisher, 'publisher'),
           ...await(getGameInfo(product.slug))
         })
+
+        await setImage({ image: product.image, game })
 
         return game
       }
