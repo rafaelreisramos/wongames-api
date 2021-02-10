@@ -8,6 +8,10 @@
 const axios = require('axios')
 const slugify = require('slugify')
 
+function timeout(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 async function getGameInfo(slug) {
   const jsdom = require('jsdom')
   const { JSDOM } = jsdom
@@ -122,6 +126,13 @@ async function createGames(products) {
         })
 
         await setImage({ image: product.image, game })
+        await Promise.all(
+          product.gallery
+            .slice(0, 5)
+            .map(url => setImage({ image: url, game, field: 'gallery' }))
+        )
+
+        await timeout(2000)
 
         return game
       }
