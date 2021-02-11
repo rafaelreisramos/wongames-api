@@ -29,7 +29,7 @@ async function getGameInfo(slug) {
 
     return {
       rating: 'BR0',
-      short_description: description.textContent.slice(0, 160),
+      short_description: description.textContent.trim().slice(0, 160),
       description: description.innerHTML
     }
   } catch (errors) {
