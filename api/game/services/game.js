@@ -49,7 +49,7 @@ async function create(name, entityName) {
   if (!item) {
     return await strapi.services[entityName].create({
       name: name,
-      slug: slugify(name, { lower: true })
+      slug: slugify(name, { strict: true, lower: true })
     })
   }
 }
