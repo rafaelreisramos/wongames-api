@@ -7055,6 +7055,11 @@ lodash@4.17.20, lodash@^4.1.1, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
 
+lodash@4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+
 log-symbols@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-2.2.0.tgz#5740e1c5d6f0dfda4ad9323b5332107ef6b4c40a"
@@ -7707,6 +7712,11 @@ nodemailer-shared@1.1.0:
   integrity sha1-z1mU4v0mjQD1zw+nZ6CBae2wfsA=
   dependencies:
     nodemailer-fetch "1.6.0"
+
+nodemailer@6.5.0:
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.5.0.tgz#d12c28d8d48778918e25f1999d97910231b175d9"
+  integrity sha512-Tm4RPrrIZbnqDKAvX+/4M+zovEReiKlEXWDzG4iwtpL9X34MJY+D5LnQPH/+eghe8DLlAVshHAJZAZWBGhkguw==
 
 noop-logger@^0.1.1:
   version "0.1.1"
@@ -10600,6 +10610,14 @@ strapi-plugin-users-permissions@3.4.1:
     strapi-helper-plugin "3.4.1"
     strapi-utils "3.4.1"
     uuid "^3.1.0"
+
+strapi-provider-email-nodemailer@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/strapi-provider-email-nodemailer/-/strapi-provider-email-nodemailer-3.6.0.tgz#2ed16bdca0e891175d43946e48a1df2b119bc1a0"
+  integrity sha512-8K0kNoGSjQvAWVjGxKwiY2VeFQaZnUuuOm3L0dQdKCVToUxiWVs7GMVVNAfeIYugGYnIfNAFjs6qi9IhCm5OyA==
+  dependencies:
+    lodash "4.17.21"
+    nodemailer "6.5.0"
 
 strapi-provider-email-sendmail@3.4.1:
   version "3.4.1"
