@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/order-intents",
+      "handler": "order-intent.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/order-intents/count",
+      "handler": "order-intent.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/order-intents/:id",
+      "handler": "order-intent.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/order-intents",
+      "handler": "order-intent.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/order-intents/:id",
+      "handler": "order-intent.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/order-intents/:id",
+      "handler": "order-intent.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

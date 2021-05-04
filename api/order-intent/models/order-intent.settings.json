@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "order_intents",
+  "info": {
+    "name": "OrderIntent",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "games": {
+      "collection": "game"
+    },
+    "amount_in_cents": {
+      "type": "biginteger",
+      "required": true
+    },
+    "payment_intent_id": {
+      "type": "string"
+    }
+  }
+}
