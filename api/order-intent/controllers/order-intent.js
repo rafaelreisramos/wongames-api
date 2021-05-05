@@ -1,24 +1,16 @@
 'use strict';
 
+const { default: createStrapi } = require("strapi");
+
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 module.exports = {
   create: async (ctx) => {
     const { cart } = ctx.request.body;
 
-    let games = [];
+    const cartGamesIds = await strapi.config.functions.cart.cartGamesIds(cart);
 
-    await Promise.all(
-      cart?.map(async (game) => {
-        const validatedGame = await strapi.services.game.findOne({
-          id: game.id,
-        })
-
-        if(validatedGame) {
-          games.push(validatedGame);
-        }
-      })
-    )
+    const games = await strapi.config.functions.cart.cartItems(cartGamesIds);
 
     if(!games.length) {
       ctx.response.status = 404;
@@ -27,9 +19,7 @@ module.exports = {
       }
     }
 
-    const amount = games.reduce((acc, game) => {
-      return acc + game.price
-    }, 0);
+    const amount = await strapi.config.functions.cart.cartTotal(games)
 
     if (amount === 0) {
       return {
@@ -39,7 +29,7 @@ module.exports = {
 
     try {
       const paymentIntent = await stripe.paymentIntents.create({
-        amount: amount * 100,
+        amount: amount,
         currency: "usd",
         metadata: {},
       });
