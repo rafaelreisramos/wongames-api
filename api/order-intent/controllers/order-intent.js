@@ -1,7 +1,5 @@
 'use strict';
 
-const { default: createStrapi } = require("strapi");
-
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 module.exports = {
