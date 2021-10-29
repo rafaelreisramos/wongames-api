@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres
+    container_name: ${COMPOSE_PROJECT_NAME}_postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=docker
+volumes:
+  data:
+    driver: local
