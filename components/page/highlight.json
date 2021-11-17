@@ -2,7 +2,8 @@
   "collectionName": "components_page_highlights",
   "info": {
     "name": "highlight",
-    "icon": "star"
+    "icon": "star",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -46,7 +47,8 @@
         "right",
         "left"
       ],
-      "default": "right"
+      "default": "right",
+      "unique": true
     }
   }
 }
