@@ -1,9 +1,8 @@
 {
-  "collectionName": "components_page_populars",
+  "collectionName": "components_page_popular_games",
   "info": {
-    "name": "popular",
-    "icon": "star-of-life",
-    "description": ""
+    "name": "popularGames",
+    "icon": "star-of-life"
   },
   "options": {},
   "attributes": {

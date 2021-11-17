@@ -71,8 +71,8 @@
       "dominant": true
     },
     "developers": {
-      "collection": "developer",
       "via": "games",
+      "collection": "developer",
       "dominant": true
     },
     "platforms": {

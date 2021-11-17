@@ -1,6 +1,6 @@
 {
   "kind": "singleType",
-  "collectionName": "recommended",
+  "collectionName": "recommendeds",
   "info": {
     "name": "recommended",
     "description": ""
@@ -14,7 +14,7 @@
     "section": {
       "type": "component",
       "repeatable": false,
-      "component": "page.popular",
+      "component": "page.popular-games",
       "required": true
     }
   }

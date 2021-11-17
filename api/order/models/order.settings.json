@@ -27,8 +27,7 @@
       "type": "string"
     },
     "total_in_cents": {
-      "type": "biginteger",
-      "required": true
+      "type": "biginteger"
     }
   }
 }
