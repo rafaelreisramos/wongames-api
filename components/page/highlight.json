@@ -45,7 +45,8 @@
       "enum": [
         "right",
         "left"
-      ]
+      ],
+      "default": "right"
     }
   }
 }

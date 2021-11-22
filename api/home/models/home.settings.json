@@ -29,7 +29,7 @@
     "popularGames": {
       "type": "component",
       "repeatable": false,
-      "component": "page.popular"
+      "component": "page.popular-games"
     }
   }
 }
